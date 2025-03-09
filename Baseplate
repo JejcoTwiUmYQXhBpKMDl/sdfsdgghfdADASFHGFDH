@@ -1,0 +1,76 @@
+-- Initialize services and variables
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+
+-- Define baseplate size and spacing
+local baseplateSize = 2000  -- Each baseplate is 2000x2000 studs
+local baseplateSpacing = 0  -- No gap between baseplates
+
+-- Table to keep track of created baseplates by grid key (e.g. "X,Z")
+local baseplateGrid = {}
+
+-- Function to create a baseplate at a specific position with a transparent smooth grey look
+local function addGrassBaseplate(position)
+    -- Create a unique key for this grid cell
+    local key = tostring(position.X) .. "," .. tostring(position.Z)
+    
+    -- If a baseplate already exists at this grid cell, do not create another
+    if baseplateGrid[key] then
+        return
+    end
+
+    print("Creating baseplate at position: " .. tostring(position))  -- Debug line
+
+    local grassBaseplate = Instance.new("Part")
+    grassBaseplate.Size = Vector3.new(baseplateSize, 0.05, baseplateSize) -- Large size
+    grassBaseplate.Anchored = true
+    grassBaseplate.Material = Enum.Material.SmoothPlastic  -- Smooth material for a clean look
+    grassBaseplate.Color = Color3.fromRGB(128, 128, 128)        -- Smooth grey color
+    
+    -- Position the baseplate at the correct location
+    grassBaseplate.Position = position
+    grassBaseplate.Transparency = 0.5   -- 50% transparent
+    grassBaseplate.CanCollide = true    -- Enable collision (so you can walk on it)
+    grassBaseplate.Parent = Workspace
+
+    -- Save reference so we don't create duplicates for this grid cell
+    baseplateGrid[key] = grassBaseplate
+end
+
+-- Function to create a grid of baseplates around the player
+local function createBaseplatesAroundPlayer()
+    local playerPosition = Player.Character.HumanoidRootPart.Position
+    local sizeMultiplier = baseplateSize + baseplateSpacing  -- For proper grid placement
+    
+    -- Create baseplates in a 3x3 grid around the player
+    for x = -1, 1 do
+        for z = -1, 1 do
+            local posX = math.floor(playerPosition.X / sizeMultiplier) * sizeMultiplier + (x * sizeMultiplier)
+            local posZ = math.floor(playerPosition.Z / sizeMultiplier) * sizeMultiplier + (z * sizeMultiplier)
+            local position = Vector3.new(posX, 0, posZ)
+            addGrassBaseplate(position)
+        end
+    end
+end
+
+-- Continuously create baseplates around the player (only for new grid cells)
+while task.wait(1) do
+    createBaseplatesAroundPlayer()
+end
+
+-- Ensure the player stays on top of the baseplate after teleporting far away
+RunService.Heartbeat:Connect(function()
+    local character = Player.Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = character.HumanoidRootPart
+        local playerPosition = humanoidRootPart.Position
+        
+        -- Check if the player is significantly below the baseplate and adjust if necessary
+        local distanceToBaseplate = math.abs(playerPosition.Y - 0.05)
+        if distanceToBaseplate > 50 then
+            humanoidRootPart.CFrame = CFrame.new(playerPosition.X, 0.05, playerPosition.Z)
+        end
+    end
+end)

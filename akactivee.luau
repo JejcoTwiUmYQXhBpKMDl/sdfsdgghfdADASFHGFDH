@@ -529,7 +529,7 @@ local function createCommandButton(name, description)
 end
 
 local function loadCommands()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/bfjdsaisfhdsfdsfbkjfdsbdfsbkjvdsbibvd/deinemudda/main/allcmdss.luau"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/main/allcmdss.luau"))()
     task.wait(0.1)
 
     local targetedCommands = {

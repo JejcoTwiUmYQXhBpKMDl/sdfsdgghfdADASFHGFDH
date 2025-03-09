@@ -323,7 +323,7 @@ end
 
 
 local function loadCommandBar()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/bfjdsaisfhdsfdsfbkjfdsbdfsbkjvdsbibvd/deinemudda/refs/heads/main/Cmdsbar"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/Cmdsbar"))()
     
 end
 

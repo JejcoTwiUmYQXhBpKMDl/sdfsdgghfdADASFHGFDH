@@ -116,13 +116,13 @@ end
 -- Button click handlers
 mobileButton.MouseButton1Click:Connect(function()
     fadeOutGui(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/bfjdsaisfhdsfdsfbkjfdsbdfsbkjvdsbibvd/deinemudda/refs/heads/main/supermanfly.luau"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/supermanfly.luau"))()
     end)
 end)
 
 pcButton.MouseButton1Click:Connect(function()
     fadeOutGui(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/bfjdsaisfhdsfdsfbkjfdsbdfsbkjvdsbibvd/deinemudda/refs/heads/main/supermanflyjj.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/supermanflyjj.lua"))()
     end)
 end)
 

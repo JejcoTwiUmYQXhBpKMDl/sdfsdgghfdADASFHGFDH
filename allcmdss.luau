@@ -3,6 +3,7 @@ _G.cmds = {
     ["!aimbot"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/main/aimbot",
     ["!akhub"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/AKHUB",
     ["!bigbaseplate"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/Baseplate",
+    ["!fov"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/FOV",
     ["!lagserver"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/lagserver",
     ["!vccontroller"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/vccontroller",
     ["!permdeath"] = "https://raw.githubusercontent.com/JejcoTwiUmYQXhBpKMDl/deinemudda/refs/heads/main/permdeath",
